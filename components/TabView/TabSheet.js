@@ -4,9 +4,8 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {View, ViewPropTypes} from 'react-native';
 
-import Theme from 'teaset/themes/Theme';
+import {View, ViewPropTypes} from 'react-native';
 
 export default class TabSheet extends Component {
   

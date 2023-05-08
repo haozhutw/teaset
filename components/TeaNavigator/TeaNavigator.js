@@ -5,10 +5,10 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {View, Text} from 'react-native';
+import {Navigator} from 'react-native-legacy-components';
 
 import TeaNavigatorScene from './TeaNavigatorScene';
 
-import {Navigator} from 'react-native-legacy-components';
 //replace NavigatorScene, optimize the effect of the scene
 Navigator.SceneConfigs = TeaNavigatorScene;
 

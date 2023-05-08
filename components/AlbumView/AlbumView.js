@@ -4,8 +4,7 @@
 
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
-import {StyleSheet, View, Image, Animated, ViewPropTypes} from 'react-native';
-import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
+import {View, Image, Animated, ViewPropTypes} from 'react-native';
 
 import Theme from 'teaset/themes/Theme';
 import AlbumSheet from './AlbumSheet';

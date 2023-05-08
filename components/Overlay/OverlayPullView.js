@@ -2,9 +2,9 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
-import {Animated, View, ViewPropTypes} from 'react-native';
+import {Animated, ViewPropTypes} from 'react-native';
 
 import Theme from '../../themes/Theme';
 import TopView from './TopView';

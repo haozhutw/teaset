@@ -2,12 +2,11 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
-import {StyleSheet, View, Image, Animated, Easing} from 'react-native';
+import {StyleSheet, Image, Animated, Easing} from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
 
-import Theme from 'teaset/themes/Theme';
 import TransformView from '../TransformView/TransformView';
 
 export default class AlbumSheet extends TransformView {

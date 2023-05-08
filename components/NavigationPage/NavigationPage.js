@@ -2,9 +2,9 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {Platform, View, Dimensions} from 'react-native';
+import {View, Dimensions} from 'react-native';
 
 import Theme from 'teaset/themes/Theme';
 import TeaNavigator from '../TeaNavigator/TeaNavigator';

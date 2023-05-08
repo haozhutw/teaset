@@ -2,7 +2,7 @@
 
 'use strict';
 
-import {Platform, Dimensions, NativeModules, DeviceInfo, StatusBar} from 'react-native';
+import {Platform, Dimensions, NativeModules, StatusBar} from 'react-native';
 
 import ThemeDefault from './ThemeDefault';
 import ThemeBlack from './ThemeBlack';

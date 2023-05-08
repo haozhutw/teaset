@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View, Text, TouchableOpacity, ViewPropTypes} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, ViewPropTypes} from 'react-native';
 
 import Theme from 'teaset/themes/Theme';
 
@@ -50,7 +50,7 @@ export default class CarouselControl extends Component {
   }
 
   renderActiveDot(dotIndex) {
-    let {activeDot, carousel} = this.props;
+    let {activeDot} = this.props;
     if (React.isValidElement(activeDot)) {
       activeDot = React.cloneElement(activeDot, {key: dotIndex});
       return activeDot;
@@ -88,7 +88,7 @@ export default class CarouselControl extends Component {
   }
 
   render() {
-    let {style, index, total, ...others} = this.props;
+    let {style} = this.props;
     return (
       <View style={[styles.container, style]} pointerEvents='box-none'>
         <View style={{flexDirection: 'row'}}>

@@ -2,8 +2,7 @@
 
 'use strict';
 
-import React, {Component} from "react";
-import {View} from 'react-native';
+import React from "react";
 
 import TopView from './TopView';
 import OverlayView from './OverlayView';

@@ -2,11 +2,9 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View, Text, Animated} from 'react-native';
-
-import Theme from 'teaset/themes/Theme';
+import {StyleSheet, Animated} from 'react-native';
 
 import TouchableOpacity from './TouchableOpacity';
 

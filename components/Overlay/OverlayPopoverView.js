@@ -2,9 +2,9 @@
 
 'use strict';
 
-import React, {Component} from "react";
+import React from "react";
 import PropTypes from 'prop-types';
-import {View, Dimensions, Platform, StatusBar} from 'react-native';
+import {Dimensions, Platform} from 'react-native';
 
 import OverlayView from './OverlayView';
 import Popover from '../Popover/Popover';

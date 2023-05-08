@@ -4,9 +4,8 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, View, ScrollView} from 'react-native';
+import {View, ScrollView} from 'react-native';
 
-import Theme from 'teaset/themes/Theme';
 import CarouselControl from './CarouselControl';
 
 export default class Carousel extends Component {

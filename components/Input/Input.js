@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {StyleSheet, TextInput} from 'react-native';
+import {TextInput} from 'react-native';
 
 import Theme from 'teaset/themes/Theme';
 

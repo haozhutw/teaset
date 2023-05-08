@@ -2,7 +2,6 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-
 import {Platform, TouchableWithoutFeedback, Animated, ViewPropTypes} from 'react-native';
 import Easing from 'react-native/Libraries/Animated/src/Easing';
 import flattenStyle from 'react-native/Libraries/StyleSheet/flattenStyle';
@@ -43,7 +42,7 @@ export default class TouchableOpacity extends Component {
     }
   }
 
-  componentWillUnmount(): void {
+  componentWillUnmount() {
     this.state.pressability && this.state.pressability.reset();
   }
 
