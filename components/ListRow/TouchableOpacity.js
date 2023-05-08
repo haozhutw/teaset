@@ -31,9 +31,9 @@ export default class TouchableOpacity extends Component {
   }
 
   componentDidMount() {
-    import('react-native/Libraries/Pressability/Pressability.js')
-      .then(Pressability => this.initPressability(Pressability.default))
-      .catch(error => console.error(error));
+    // import('react-native/Libraries/Pressability/Pressability.js')
+    //   .then(Pressability => this.initPressability(Pressability.default))
+    //   .catch(error => console.error(error));
   }
 
   componentDidUpdate(prevProps, prevState) {

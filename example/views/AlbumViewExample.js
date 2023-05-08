@@ -2,10 +2,10 @@
 
 'use strict';
 
-import React, {Component} from 'react';
+import React from 'react';
 import {View, Image, TouchableOpacity, StatusBar} from 'react-native';
 
-import {Theme, NavigationPage, AlbumView, Overlay, Button} from 'teaset';
+import {NavigationPage, AlbumView, Overlay} from 'teaset';
 
 export default class AlbumViewExample extends NavigationPage {
 
