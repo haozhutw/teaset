@@ -11,12 +11,12 @@ declare module 'teaset' {
       ViewProps,
       ImageSourcePropType
   } from 'react-native'
-  import { Component } from 'react'
+  import { Component, JSX } from 'react';
 
   interface BaseOverlay extends ViewProps {
       show?: (overlayView: JSX.Element) => number;
       hide?: (key: number) => void;
-      transformRoot?: (transform, animated: boolean, animatesOnly?: boolean) => void;
+      transformRoot?: (transform: any, animated: boolean, animatesOnly?: boolean) => void;
       restoreRoot?: (animated: boolean, animatesOnly?: boolean) => void;
   }
 
@@ -56,7 +56,6 @@ declare module 'teaset' {
       align?: 'start' | 'center' | 'end';
       alignInsets?: number;
       showArrow?: boolean;
-      //??
       paddingCorner?: number;
   }
 
@@ -66,23 +65,23 @@ declare module 'teaset' {
       rootTransform?: 'none' | 'translate' | 'scale' | Bounds[];
   }
 
-  export class OverlayView extends Component<IOverlayViewProps, any> {}
-  export class OverlayPopoverView extends Component<IOverlayPopoverViewProps, any> {}
-  export class OverlayPopView extends Component<IOverlayPopViewProps, any> {}
-  export class OverlayPullView extends Component<IOverlayPullViewProps, any> {}
+  export class OverlayView extends Component<IOverlayViewProps, any> {};
+  export class OverlayPopoverView extends Component<IOverlayPopoverViewProps, any> {};
+  export class OverlayPopView extends Component<IOverlayPopViewProps, any> {};
+  export class OverlayPullView extends Component<IOverlayPullViewProps, any> {};
 
   export class BaseOverlay {
-      static View: typeof OverlayView
-      static PullView: typeof OverlayPullView
-      static PopView: typeof OverlayPopView
-      static PopoverView: typeof OverlayPopoverView
-      static hide: (key: number) => void
-      static transformRoot: (transform, animated: boolean, animatesOnly?: boolean) => void
-      static restoreRoot: (animated: boolean, animatesOnly?: boolean) => void
+      static View: typeof OverlayView;
+      static PullView: typeof OverlayPullView;
+      static PopView: typeof OverlayPopView;
+      static PopoverView: typeof OverlayPopoverView;
+      static hide: (key: number) => void;
+      static transformRoot: (transform: any, animated: boolean, animatesOnly?: boolean) => void;
+      static restoreRoot: (animated: boolean, animatesOnly?: boolean) => void;
   }
 
   export class Overlay extends BaseOverlay {
-      static show: (overlayView: JSX.Element) => number
+      static show: (overlayView: JSX.Element) => number;
   }
 
   // export const Overlay: Overlay;
@@ -95,41 +94,45 @@ declare module 'teaset' {
   }
 
   type ActionPopoverProps = BaseOverlay & {
-      show: (fromBounds?, items?: any[], options?: any) => number;
+      show: (fromBounds?: any, items?: any[], options?: any) => number;
   }
 
-  export const ActionPopover: ActionPopoverProps
+  export const ActionPopover: ActionPopoverProps;
 
   type ActionSheetProps = BaseOverlay & {
       show: (items?: IActionSheetItemProps[], cancelItem?: any, options?: any) => number;
   }
 
-  export const ActionSheet: ActionSheetProps
+  export const ActionSheet: ActionSheetProps;
 
   type IToastViewProps = IOverlayViewProps & {
       text: JSX.Element | string | number;
       icon: JSX.Element | { uri: string } | number | 'none' | 'success' | 'fail' | 'smile' | 'sad' | 'info' | 'stop';
-      position: 'top' | 'bottom' | 'center';
+      position: IToastPosition;
+      duration: IToastDuration;
   }
+
+  type IToastPosition = 'top' | 'bottom' | 'center';
+  type IToastDuration = 'long' | 'short' | number;
+
+  export type IToastProps = IToastViewProps;
 
   export class ToastView extends Component<IToastViewProps, any> {}
 
-  export type IToastProps = IOverlayViewProps;
-
   export class Toast extends Overlay {
-      static ToastView: typeof ToastView
-      static defaultDuration: string
-      static defaultPosition: string
-      static messageDefaultDuration: string
-      static messageDefaultPosition: string
-      static show: (options) => number
-      static message: (text: string, options?, position?) => number
-      static success: (text: string, options?, position?) => number
-      static fail: (text: string, options?, position?) => number
-      static smile: (text, options?, position?) => number
-      static sad: (text: string, options?, position?) => number
-      static info: (text: string, options?, position?) => number
-      static stop: (text: string, options?, position?) => number
+      static ToastView: typeof ToastView;
+      static defaultDuration: string;
+      static defaultPosition: string;
+      static messageDefaultDuration: string;
+      static messageDefaultPosition: string;
+      static show: (options) => number;
+      static message: (text: string, duration?: IToastDuration, position?: IToastPosition) => number;
+      static success: (text: string, duration?: IToastDuration, position?: IToastPosition) => number;
+      static fail: (text: string, duration?: IToastDuration, position?: IToastPosition) => number;
+      static smile: (text: string, duration?: IToastDuration, position?: IToastPosition) => number;
+      static sad: (text: string, duration?: IToastDuration, position?: IToastPosition) => number;
+      static info: (text: string, duration?: IToastDuration, position?: IToastPosition) => number;
+      static stop: (text: string, duration?: IToastDuration, position?: IToastPosition) => number;
   }
 
   export interface AlertButton {
@@ -165,7 +168,6 @@ declare module 'teaset' {
       hide: () => void;
   }
 
-  export const Alert: AlertStatic
   export type Alert = AlertStatic
 
   interface IAlertViewProps extends ViewProps {
@@ -178,7 +180,7 @@ declare module 'teaset' {
 
   export class AlertView extends Component<IAlertViewProps, any> {}
 
-  type BadgeTypes = 'capsule' | 'square' | 'dot'
+  type BadgeTypes = 'capsule' | 'square' | 'dot';
 
   interface IBadgeProps extends ViewProps {
       type?: BadgeTypes;
@@ -187,7 +189,7 @@ declare module 'teaset' {
       maxCount?: number;
   }
 
-  export class Badge extends Component<IBadgeProps, any> {}
+  export class Badge extends Component<IBadgeProps, any> {};
 
   interface IBasePageProps extends ViewProps {
       // transition effect
@@ -198,11 +200,11 @@ declare module 'teaset' {
       keyboardTopInsets?: number;
   }
 
-  export class BasePage extends Component<IBasePageProps, any> {}
+  export class BasePage extends Component<IBasePageProps, any> {};
 
-  type ButtonTypes = 'default' | 'primary' | 'secondary' | 'danger' | 'link'
+  type ButtonTypes = 'default' | 'primary' | 'secondary' | 'danger' | 'link';
 
-  type ButtonSizes = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+  type ButtonSizes = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 
   interface IButtonProps extends TouchableOpacityProps {
       type?: ButtonTypes;
@@ -211,7 +213,7 @@ declare module 'teaset' {
       titleStyle?: TextStyle;
   }
 
-  export class Button extends Component<IButtonProps, any> {}
+  export class Button extends Component<IButtonProps, any> {};
 
   interface IDashLineProps extends ViewProps {
       style?: StyleProp<ViewStyle>;
@@ -226,7 +228,7 @@ declare module 'teaset' {
       static defaultProps: Pick<IDashLineProps, 'dashGap'> &
           Pick<IDashLineProps, 'dashLength'> &
           Pick<IDashLineProps, 'dashThickness'> &
-          Pick<IDashLineProps, 'dashColor'>
+          Pick<IDashLineProps, 'dashColor'>;
   }
 
   interface ICarouselProps extends ScrollViewProps {
@@ -250,10 +252,10 @@ declare module 'teaset' {
       activeDot?: JSX.Element;
       style?: ViewStyle;
   }
-  class CarouselControl extends Component<ControlProps, any> {}
+  class CarouselControl extends Component<ControlProps, any> {};
 
   export class Carousel extends Component<ICarouselProps, any> {
-      static Control: typeof CarouselControl
+      static Control: typeof CarouselControl;
   }
 
   interface ICheckboxProps extends TouchableOpacityProps {
@@ -266,17 +268,17 @@ declare module 'teaset' {
       checkedIconStyle?: StyleProp<ImageStyle>;
       uncheckedIcon?: JSX.Element | { uri: string } | number;
       uncheckedIconStyle?: StyleProp<ImageStyle>;
-      onChange?: any;
+      onChange?: (checked: boolean) => void;
   }
 
-  export class Checkbox extends Component<ICheckboxProps, any> {}
+  export class Checkbox extends Component<ICheckboxProps, any> {};
 
   export type IDrawerProps = IOverlayViewProps;
 
   export class Drawer extends Overlay {
       static DrawerView: typeof OverlayPullView
       static open: (
-          view,
+          view: JSX.Element,
           side?: string,
           rootTransform?: string,
           options?: any
@@ -288,17 +290,17 @@ declare module 'teaset' {
       disabled?: boolean;
   }
 
-  export class Input extends Component<IInputProps> {}
+  export class Input extends Component<IInputProps> {};
 
   export interface IKeyboardSpaceProps {
       topInsets: number;
   }
 
-  export class KeyboardSpace extends Component<IKeyboardSpaceProps> {}
+  export class KeyboardSpace extends Component<IKeyboardSpaceProps> {};
 
-  type LabelTypes = 'default' | 'title' | 'detail' | 'danger'
+  type LabelTypes = 'default' | 'title' | 'detail' | 'danger';
 
-  type LabelSizes = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+  type LabelSizes = 'xl' | 'lg' | 'md' | 'sm' | 'xs';
 
   interface ILabelProps extends TextStyle {
       style?: StyleProp<TextStyle>;
@@ -307,7 +309,7 @@ declare module 'teaset' {
       text: string | number;
   }
 
-  export class Label extends Component<ILabelProps, any> {}
+  export class Label extends Component<ILabelProps, any> {};
 
   interface IListRowProps extends ISwipeTouchableOpacityProps {
       required?: boolean;
@@ -326,7 +328,7 @@ declare module 'teaset' {
   }
 
   export class ListRow extends Component<IListRowProps, any> {
-      static defaultProps: Partial<IListRowProps>
+      static defaultProps: Partial<IListRowProps>;
   }
 
   export interface IMenuViewProps extends IOverlayPopoverViewProps {
@@ -338,18 +340,18 @@ declare module 'teaset' {
       shadow: boolean;
   }
 
-  export class MenuView extends Component<IMenuViewProps, any> {}
+  export class MenuView extends Component<IMenuViewProps, any> {};
 
   export interface IMenuItemProps {
       title: JSX.Element | string | number;
       icon: JSX.Element | { uri: string } | string | number | 'none' | 'empty';
   }
 
-  export class MenuItem extends Component<IMenuItemProps> {}
+  export class MenuItem extends Component<IMenuItemProps> {};
 
   export class Menu extends BaseOverlay {
       static MenuView: typeof MenuView
-      static show: (fromBounds?, items?: any[], options?: any) => typeof MenuView
+      static show: (fromBounds?: any, items?: any[], options?: any) => typeof MenuView;
   }
 
   export interface IModalIndicatorViewProps extends IOverlayViewProps {
@@ -359,7 +361,7 @@ declare module 'teaset' {
       color?: string;
   }
 
-  export class ModalIndicatorView extends Component<IModalIndicatorViewProps> {}
+  export class ModalIndicatorView extends Component<IModalIndicatorViewProps> {};
 
   export class ModalIndicator extends BaseOverlay {
       static IndicatorView: typeof ModalIndicatorView;
@@ -379,7 +381,7 @@ declare module 'teaset' {
 
   export type INavigationButtonProps = TouchableOpacityProps;
 
-  class NavigationButton extends Component<INavigationButtonProps> {}
+  class NavigationButton extends Component<INavigationButtonProps> {};
 
   export interface INavigationBackButtonProps extends INavigationButtonProps {
       title?: string | JSX.Element;
@@ -446,21 +448,21 @@ declare module 'teaset' {
       | 'bottomLeft'
       | 'leftBottom'
       | 'left'
-      | 'leftTop'
+      | 'leftTop';
 
   interface IPopoverProps {
       arrow?: PopoverArrows;
       paddingCorner?: number;
   }
 
-  export class Popover extends Component<IPopoverProps & ViewProps, any> {}
+  export class Popover extends Component<IPopoverProps & ViewProps, any> {};
 
   export class PopoverPickerItem extends Component<
       TouchableOpacityProps & {
           title: JSX.Element | string | number;
           selected: boolean;
       }
-  > {}
+  > {};
 
   interface IPopoverPickerViewProps extends IOverlayPopoverViewProps {
       items: any[];
@@ -488,7 +490,7 @@ declare module 'teaset' {
           index: number;
           slideStyle?: StyleProp<ViewStyle>;
       } & ViewProps
-  > {}
+  > {};
 
   export class PullPickerView extends Component<
       IOverlayPullViewProps & {
@@ -500,7 +502,7 @@ declare module 'teaset' {
       }
   > {}
 
-  export class PullPickerItem extends Component<IListRowProps & { selected?: boolean }> {}
+  export class PullPickerItem extends Component<IListRowProps & { selected?: boolean }> {};
 
   export class PullPicker extends BaseOverlay {
       static PullPickerView: typeof PullPickerView;
@@ -520,7 +522,7 @@ declare module 'teaset' {
       disabled?: boolean;
   }
 
-  export class SearchInput extends Component<ISearchInputProps> {}
+  export class SearchInput extends Component<ISearchInputProps> {};
 
   interface ISegmentedItemProps extends ViewProps {
       title: JSX.Element | string | number;
@@ -528,10 +530,10 @@ declare module 'teaset' {
       activeTitleStyle?: StyleProp<TextStyle>;
       active?: boolean;
       badge?: JSX.Element | string | number;
-      onAddWidth?: (width) => any;
+      onAddWidth?: (width: number) => any;
   }
 
-  export class SegmentedItem extends Component<ISegmentedItemProps> {}
+  export class SegmentedItem extends Component<ISegmentedItemProps> {};
 
   interface ISegmentedBarProps extends ViewProps {
       justifyItem?: 'fixed' | 'scrollable';
@@ -544,7 +546,7 @@ declare module 'teaset' {
       animated?: boolean;
       autoScroll?: boolean;
       activeIndex?: number; //if use this prop, you need update this value from onChange event
-      onChange?: (index) => any; //(index)
+      onChange?: (index: number) => void; //(index)
   }
 
   export class SegmentedBar extends Component<ISegmentedBarProps> {
@@ -558,7 +560,7 @@ declare module 'teaset' {
       badge?: JSX.Element | string | number;
   }
 
-  export class SegmentedSheet extends Component<ISegmentedSheetProps> {}
+  export class SegmentedSheet extends Component<ISegmentedSheetProps> {};
 
   interface ISegmentedViewProps extends ViewProps {
       type?: 'projector' | 'carousel';
@@ -574,11 +576,11 @@ declare module 'teaset' {
       animated?: boolean;
       autoScroll?: boolean;
       activeIndex?: number;
-      onChange?: (index) => any; //(index)
+      onChange?: (index: number) => void; //(index)
   }
 
   export class SegmentedView extends Component<ISegmentedViewProps> {
-      static Sheet: typeof SegmentedSheet
+      static Sheet: typeof SegmentedSheet;
   }
 
   interface ISelectProps extends ViewProps {
@@ -598,7 +600,7 @@ declare module 'teaset' {
       onSelected?: (item, index) => any; //(item, index)
   }
 
-  export class Select extends Component<ISelectProps> {}
+  export class Select extends Component<ISelectProps> {};
 
   interface IStepperProps extends ViewProps {
       defaultValue?: number;
@@ -618,7 +620,7 @@ declare module 'teaset' {
       onTextPress?: () => any;
   }
 
-  export class Stepper extends Component<IStepperProps> {}
+  export class Stepper extends Component<IStepperProps> {};
 
   interface ITabButtonProps extends ViewProps {
       title: JSX.Element | string | number;
@@ -631,7 +633,7 @@ declare module 'teaset' {
       badge?: JSX.Element | number;
   }
 
-  export class TabButton extends Component<ITabButtonProps> {}
+  export class TabButton extends Component<ITabButtonProps> {};
 
   interface ITabSheetProps extends ViewProps {
       type?: 'sheet' | 'button';
@@ -640,21 +642,21 @@ declare module 'teaset' {
       activeIcon?: JSX.Element | { uri: string } | number;
       iconContainerStyle?: StyleProp<ViewStyle>;
       badge?: JSX.Element | number;
-      onPress?: any;
+      onPress?: () => void;
   }
 
-  export class TabSheet extends Component<ITabSheetProps> {}
+  export class TabSheet extends Component<ITabSheetProps> {};
 
   export class TabView extends Component<
       ViewProps & {
           type?: 'projector' | 'carousel';
           barStyle?: StyleProp<ViewStyle>;
           activeIndex?: number;
-          onChange?: (index) => any; //(index)
+          onChange?: (index: number) => any; //(index)
       }
   > {
-      static Sheet: typeof TabSheet
-      static Button: typeof TabButton
+      static Sheet: typeof TabSheet;
+      static Button: typeof TabButton;
   }
 
   interface ITransformViewProps extends ViewProps {
@@ -675,7 +677,7 @@ declare module 'teaset' {
       onLongPress?: (event) => any; //(event)
   }
 
-  export class TransformView extends Component<ITransformViewProps> {}
+  export class TransformView extends Component<ITransformViewProps> {};
 
   export interface IWheelItemProps extends ViewProps {
       index: number;
@@ -684,7 +686,7 @@ declare module 'teaset' {
       currentPosition?: any; //instanceOf(Animated)
   }
 
-  export class WheelItem extends Component<IWheelItemProps> {}
+  export class WheelItem extends Component<IWheelItemProps> {};
 
   interface IWheelProps extends ViewProps {
       items: JSX.Element | string[] | number[];
@@ -696,7 +698,7 @@ declare module 'teaset' {
       defaultIndex?: number;
       onChange?: (index) => any; //(index)
   }
-  export class Wheel extends Component<IWheelProps, any> {}
+  export class Wheel extends Component<IWheelProps, any> {};
 
   interface ISwipeTouchableOpacityProps extends TouchableOpacityProps {
       swipeable?: boolean;
@@ -704,7 +706,7 @@ declare module 'teaset' {
       onSwipeStsChange?: any;
   }
 
-  export class SwipeTouchableOpacity extends Component<ISwipeTouchableOpacityProps, any> {}
+  export class SwipeTouchableOpacity extends Component<ISwipeTouchableOpacityProps, any> {};
 
   interface AlbumViewProps extends ViewProps {
       images: ImageSourcePropType;
@@ -723,7 +725,7 @@ declare module 'teaset' {
       onLoadImageFailure?: (index: number, error: any) => void; //(index, error)
   }
 
-  export class AlbumView extends Component<AlbumViewProps> {}
+  export class AlbumView extends Component<AlbumViewProps> {};
 
   //#region theme
   export interface ThemeConfig {
@@ -1177,6 +1179,4 @@ declare module 'teaset' {
       fontSizeAndColor: (size: number, color: string) => { fontSize: number; color: string };
   } & ThemeConfigPartial;
   //#endregion
-
-  export const BackHandler: any
 }

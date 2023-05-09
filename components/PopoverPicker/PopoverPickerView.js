@@ -38,7 +38,7 @@ export default class PopoverPickerView extends Overlay.PopoverView {
   }
 
   buildPopoverStyle() {
-    let {shadow, items, selectedIndex, getItemText} = this.props;
+    let {shadow} = this.props;
 
     let pickerStyle = {
       backgroundColor: Theme.poppColor,
