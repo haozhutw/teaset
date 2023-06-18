@@ -2,8 +2,8 @@
 
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {Platform, TouchableWithoutFeedback, Animated, ViewPropTypes} from 'react-native';
-import Easing from 'react-native/Libraries/Animated/src/Easing';
+import {Platform, TouchableWithoutFeedback, Animated, Easing} from 'react-native';
+import {ViewPropTypes} from "deprecated-react-native-prop-types";
 import flattenStyle from 'react-native/Libraries/StyleSheet/flattenStyle';
 
 if (Platform.constants.reactNativeVersion.major === 0 && Platform.constants.reactNativeVersion.minor < 62) {

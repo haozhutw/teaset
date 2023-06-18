@@ -4,7 +4,8 @@
 
 import React, {Component} from "react";
 import PropTypes from 'prop-types';
-import {Animated, ViewPropTypes} from 'react-native';
+import {Animated} from 'react-native';
+import {ViewPropTypes} from "deprecated-react-native-prop-types";
 
 export default class WheelItem extends Component {
 
